@@ -35,9 +35,6 @@ public class Alphabetizer<T extends ArrayList<ArrayList<String>>,U extends Array
 
 	//method
 	public void transform(){
-		/***
-		 * to do : convert to majuscule or minuscule
-		 */
 		//convert the arrayList<String> into a string
 		int sizeinput = this.inputstream.content.size();
 		

@@ -22,22 +22,11 @@ public class Master {
 		Pipe<ArrayList<ArrayList<String>>, ArrayList<String>> pipeCA = new Pipe<ArrayList<ArrayList<String>>, ArrayList<String>>();
 		Pipe<ArrayList<String>, String> pipeAO = new Pipe<ArrayList<String>, String>();
 		
-		//creates the first stream
-		ArrayList<String> titre = new ArrayList<String>();
-		titre.add("the");
-		titre.add("lost");
-		titre.add("world");
-		ArrayList<ArrayList<String>> listetitre = new ArrayList<ArrayList<String>>();
-		listetitre.add(titre);
-		listetitre.add(titre);
-		ArrayList<String> interdit = new ArrayList<String>();
-		interdit.add("the");
-		listetitre.add(interdit);
-		Stream<ArrayList<ArrayList<String>>> stream = new Stream<ArrayList<ArrayList<String>>>(listetitre);
 		
 		//sends it into the filters
 		i.transform();
-		c.setInputstream(stream);
+		pipeIC.setInputstream(i.getOutputstream());
+		pipeIC.sendtonextfilter(c);
 		c.transform();
 		pipeCA.setInputstream(c.getOutputstream());
 		pipeCA.sendtonextfilter(a);
